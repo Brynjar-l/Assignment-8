@@ -2,7 +2,6 @@ package is.hi.hbv202g.assignment8;
 
 import java.time.LocalDate;
 
-// TODO: add Exception throwing
 public class Lending {
     private LocalDate dueDate;
     private Book book;
