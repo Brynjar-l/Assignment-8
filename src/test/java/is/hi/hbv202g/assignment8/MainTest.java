@@ -8,8 +8,8 @@ import org.junit.Test;
 public class MainTest
 {
     @Test
-    public void shouldBePossibleToInstantiateLibrarySystem()
-    {
+    public void shouldBePossibleToInstantiateLibrarySystem() {
         new LibrarySystem();
     }
+
 }
