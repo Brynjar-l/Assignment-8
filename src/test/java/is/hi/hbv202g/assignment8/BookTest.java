@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 // TODO: check for exception throwing, !IMPORTANT
 
 public class BookTest {
@@ -36,7 +34,7 @@ public class BookTest {
     }
 
     @Test
-    public void getAuthors() {
+    public void getAuthors() {      // TODO: Debugga heima
         java.util.Iterator<Author> iterator1 = book1.getAuthors().iterator();
         while (iterator1.hasNext()) {
             assertEquals(author1, iterator1.next());
@@ -51,19 +49,33 @@ public class BookTest {
         }  
     }
 
-    @Test
-    public void setAuthors() {
+    @Test (expected = EmptyAuthorListException.class)
+    public void setAuthorsEmptyShouldThrowException() throws EmptyAuthorListException {
+        List<Author> newListOfAuthors = new ArrayList<>();
+        book1.setAuthors(newListOfAuthors);
     }
 
     @Test
-    public void addAuthor() {
+    public void addAuthor() {       // TODO: passa að getAuthors() virki fyrst
+        book1.addAuthor(new Author("New Author"));
+        // getAuthors(); frá Test Skjalinu
     }
 
     @Test
     public void getTitle() {
+        assertEquals(title1, book1.getTitle());
+        assertEquals(title2, book2.getTitle());
     }
 
     @Test
     public void setTitle() {
+        final String newTitle1 = "Harry Potter";
+        final String newTitle2 = "The Lord of the Rings";
+
+        book1.setTitle(newTitle1);
+        book2.setTitle(newTitle2);
+
+        assertEquals(newTitle1, book1.getTitle());
+        assertEquals(newTitle2, book2.getTitle());
     }
 }
